@@ -1,5 +1,7 @@
 # Folllow the Ingress Controller in AKS tutorial [here](https://github.com/MicrosoftDocs/azure-docs/blob/90f41730b9836e89d3e53b44707109c32b5e52d0/articles/aks/ingress-basic.md)
 
+### [Cooler example with helm, K8s, and AzureRM here](https://github.com/hashicorp/terraform-provider-kubernetes/tree/main/_examples/aks)
+
 ## Step 1: Create an AKS resource
 
 ### NOTE: This example provisions a basic Managed Kubernetes Cluster. Other examples of the azurerm_kubernetes_cluster resource can be found in the [./examples/kubernetes directory within the GitHub Repository.](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples/kubernetes).
