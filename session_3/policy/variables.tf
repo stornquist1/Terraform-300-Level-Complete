@@ -1,3 +1,5 @@
+############### Policy Variables ###############
+
 variable "policy_set_name" {
   type        = string
   description = "The name of the policy set and assignment."

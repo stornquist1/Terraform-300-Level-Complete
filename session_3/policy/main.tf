@@ -43,7 +43,6 @@ resource "azurerm_policy_set_definition" "custom_dod_il5_initiative" {
   display_name          = "${var.de_environment}-${var.policy_set_name}"
   description           = var.policy_description
   parameters            = jsonencode(local.parameters)
-  management_group_id  = var.management_group_id
 
   metadata = <<METADATA
     {
@@ -62,6 +61,7 @@ resource "azurerm_policy_set_definition" "custom_dod_il5_initiative" {
     }
   }
 }
+
 resource "azurerm_subscription_policy_assignment" "custom_dod_il5_assignment" {
   name                 = "${var.de_environment}-${var.policy_set_assignment_name}"
   display_name         = "${var.de_environment}-${var.policy_set_assignment_name}"
