@@ -28,3 +28,4 @@ resource "azurerm_firewall" "firewall" {
     tier = "Standard"
   }
 }
+
