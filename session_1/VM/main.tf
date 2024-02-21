@@ -14,23 +14,23 @@ resource "azurerm_key_vault" "azkeyvault" {
   purge_protection_enabled    = false
   sku_name                    = "standard"
   access_policy {
-    tenant_id           = data.azurerm_client_config.current.tenant_id
-    object_id           = data.azurerm_client_config.current.object_id
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
 
-    secret_permissions  = [
-    "Backup",
-    "Delete",
-    "Get",
-    "List",
-    "Purge",
-    "Recover",
-    "Restore",
-    "Set",
+    secret_permissions = [
+      "Backup",
+      "Delete",
+      "Get",
+      "List",
+      "Purge",
+      "Recover",
+      "Restore",
+      "Set",
     ]
   }
   access_policy {
-    tenant_id    = data.azurerm_client_config.current.tenant_id
-    object_id    = "user-object-id"
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = "user-object-id"
 
     secret_permissions = [
       "Backup",
@@ -138,18 +138,18 @@ resource "azurerm_windows_virtual_machine" "vmTerra" {
   }
 }
 
-  resource "azurerm_managed_disk" "vmdatadisk" {
-    name                 = "vmdisk1"
-    location             = azurerm_resource_group.vmterravmRG.location
-    resource_group_name  = azurerm_resource_group.vmterravmRG.name
-    storage_account_type = "Standard_LRS"
-    create_option        = "Empty"
-    disk_size_gb         = 10
-  }
+resource "azurerm_managed_disk" "vmdatadisk" {
+  name                 = "vmdisk1"
+  location             = azurerm_resource_group.vmterravmRG.location
+  resource_group_name  = azurerm_resource_group.vmterravmRG.name
+  storage_account_type = "Standard_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = 10
+}
 
-  resource "azurerm_virtual_machine_data_disk_attachment" "data" {
-    managed_disk_id    = azurerm_managed_disk.vmdatadisk.id
-    virtual_machine_id = azurerm_windows_virtual_machine.vmTerra.id
-    lun                = "10"
-    caching            = "ReadWrite"
-  }
+resource "azurerm_virtual_machine_data_disk_attachment" "data" {
+  managed_disk_id    = azurerm_managed_disk.vmdatadisk.id
+  virtual_machine_id = azurerm_windows_virtual_machine.vmTerra.id
+  lun                = "10"
+  caching            = "ReadWrite"
+}
