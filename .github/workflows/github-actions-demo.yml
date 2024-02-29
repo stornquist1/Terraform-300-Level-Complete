@@ -13,12 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-    - name: Set up Azure CLI
+      - name: Set up Azure CLI
         uses: azure/login@v1
         with:
             creds: ${{ secrets.AZURE_CERTIFICATE }}
+            enable-AzPSSession: true
 
       - name: Run Azure CLI command
         run: az account show
-
-        
