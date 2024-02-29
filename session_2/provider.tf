@@ -1,6 +1,6 @@
 terraform {
   # Use local backend for local development, use azurerm backend for Azure development / deployment
-  backend "local" { }
+  backend "local" {}
   # backend "azurerm" {
   #   environment = "usgovernment"
   # }
