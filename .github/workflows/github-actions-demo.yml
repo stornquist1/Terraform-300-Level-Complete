@@ -18,7 +18,7 @@ jobs:
         with:
             creds: ${{ secrets.AZURE_CERTIFICATE }}
             enable-AzPSSession: true
-            auth-type: service-principal
-            
+            auth-type: SERVICE_PRINCIPAL
+
       - name: Run Azure CLI command
         run: az account show
