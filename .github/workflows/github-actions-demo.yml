@@ -19,8 +19,6 @@ jobs:
             creds: ${{ secrets.AZURE_CERTIFICATE }}
             enable-AzPSSession: true
             auth-type: service-principal
-      - name: Azure CLI script
-            az login --service-principal --username "2494145e-875c-437a-aabb-c3df4e1a6a6e" --tenant "72f988bf-86f1-41af-91ab-2d7cd011db47"--password ${{ secrets.AZURE_CERTIFICATE }}
-
+            
       - name: Run Azure CLI command
         run: az account show
