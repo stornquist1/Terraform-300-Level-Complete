@@ -1,9 +1,13 @@
 terraform {
-  # Use local backend for local development, use azurerm backend for Azure development / deployment
-  backend "local" {}
-  # backend "azurerm" {
-  #   environment = "usgovernment"
-  # }
+  # # Use local backend for local development, use azurerm backend for Azure development / deployment
+  # backend "local" {}
+  backend "azurerm" {
+    # environment          = "usgovernment"
+    resource_group_name  = "rg-tf300session2"
+    storage_account_name = "sastatetf300session2"
+    container_name       = "fileshare-tf300session2"
+    key                  = "tf300session2chioke.tfstate"
+  }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
