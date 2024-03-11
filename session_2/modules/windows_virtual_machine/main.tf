@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
+  name     = var.rg_name
   location = var.location
 }
 
@@ -29,6 +29,8 @@ resource "azurerm_key_vault" "kv" {
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   purge_protection_enabled    = false
   sku_name                    = "standard"
+
+  # Access Policy for terraform
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
