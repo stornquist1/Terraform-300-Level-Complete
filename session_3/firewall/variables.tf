@@ -16,3 +16,7 @@ variable "virtual_network_name" {
 }
 
 ############### Firewall ###############
+
+#Need to add Maps and objects 
+#Need to add optional keyword
+# Copilot example

@@ -1,3 +1,24 @@
+terraform {
+  required_version = ">= 1.0.11"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.95.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "= 3.1.0"
+    }
+    time = {
+      source  = "hashicorp/time"
+      version = "0.7.2"
+    }
+    azurecaf = {
+      source  = "aztfmod/azurecaf"
+      version = "1.2.21"
+    }
+  }
+}
 
 ################# DATA SOURCES #################
 
@@ -17,6 +38,10 @@ resource "azurerm_firewall" "firewall" {
   name                = "firewall"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
+  sku_name            = "AZFW_VNet"
+  sku_tier            = "Standard"
+
+  #firewall_policy_id = azurerm_firewall_policy.firewall_policy.id
   ip_configuration {
     name                 = "firewall"
     subnet_id            = azurerm_subnet.firewall.id
