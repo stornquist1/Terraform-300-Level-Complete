@@ -22,7 +22,6 @@ provider "azurerm" {
   features {}
 }
 
-
 provider "kubernetes" {
   host                   = data.azurerm_kubernetes_cluster.default.kube_config.0.host
   client_certificate     = base64decode(data.azurerm_kubernetes_cluster.default.kube_config.0.client_certificate)
@@ -56,6 +55,8 @@ resource "helm_release" "nginx_ingress" {
 
   repository = "https://kubernetes.github.io/ingress-nginx"
   chart      = "ingress-nginx"
+
+  depends_on = [kubernetes_namespace.test]
 }
 
 # lifecycle = {

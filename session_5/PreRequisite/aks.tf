@@ -1,12 +1,8 @@
-resource "random_id" "dedup" {
-  byte_length = 2
-}
-
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "${replace(format("aks%s", lower(replace("tf", "/[[:^alnum:]]/", ""))), "/(.{0,13})(.*)/", "$1")}${random_id.dedup.hex}"
+  name                = "readinessaks"
   location            = data.azurerm_resource_group.cluster_rg.location
   resource_group_name = data.azurerm_resource_group.cluster_rg.name
-  dns_prefix          = "${replace(format("aks%s", lower(replace("tf", "/[[:^alnum:]]/", ""))), "/(.{0,13})(.*)/", "$1")}${random_id.dedup.hex}"
+  dns_prefix          = "readinessaks"
 
   default_node_pool {
     name       = "default"
