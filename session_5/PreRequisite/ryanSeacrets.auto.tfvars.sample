@@ -1,0 +1,13 @@
+# Global Variables
+tenant_id       = "<your tenant ID>"
+environment     = "<your environment 'azureCloud' 'usgovernment'>"
+subscription_id = "<your subscription ID>"
+location        = "<your location>"
+
+# Container ID
+principal_id  = "<your container ID app ID>"
+client_secret = "<your container ID password>"
+
+# AKS ID
+cluster_principal_id  = "<your cluser app ID>"
+cluster_client_secret = "<your cluser ID password>"
