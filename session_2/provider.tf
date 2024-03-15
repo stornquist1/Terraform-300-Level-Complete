@@ -1,9 +1,9 @@
 terraform {
   # # Use local backend for local development, use azurerm backend for Azure development / deployment
-  # backend "local" {}
-  backend "azurerm" {
-    # environment          = "usgovernment"
-  }
+  backend "local" {}
+  # backend "azurerm" {
+  #   # environment          = "usgovernment"
+  # }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -23,8 +23,13 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false       
+    }
+  }
   # environment                = "usgovernment"
   skip_provider_registration = true
   storage_use_azuread        = true
+  
 }

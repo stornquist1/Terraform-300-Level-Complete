@@ -47,11 +47,3 @@ variable "management_group_id" {
   type        = string
   default     = "/managmentgroups/242da254-1fea-0364-2584-c930f11f89c2"
 }
-
-#Session 3: Scott Tornquist
-#Policy(Nist-800, ect), Firewalls, Loops, Dynamic Statements, Maps, Objects, Data vs Resource Blocks, Optional Keyword, Co-Pilot
-#Lab: Customer asks you to secure their environments with policy and a firewall: They hand you a huge json file
-
-#Need to add Maps and objects 
-#Need to add optional keyword
-# Copilot example
