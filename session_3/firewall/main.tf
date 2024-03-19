@@ -9,18 +9,7 @@ data "azurerm_virtual_network" "firewall_vnet" {
   resource_group_name = var.resource_group_name
 }
 
-# data "azurerm_subnet" "subnet" {
-#   name                 = var.firewall_subnet_name
-#   virtual_network_name = var.virtual_network_name
-#   resource_group_name  = var.resource_group_name
-# }
-
 ################# RESOURCES #################
-
-resource "azurerm_resource_group" "firewall_rg" {
-  name     = var.firewall_rg_name
-  location = var.location
-}
 
 resource "azurerm_virtual_network" "firewall_vnet" {
   name                = var.firewall_virtual_network_name
@@ -57,7 +46,7 @@ resource "azurerm_firewall" "firewall" {
     public_ip_address_id = azurerm_public_ip.firewall_pip.id
   }
 }
-# Co-pilot Create a firewall network rule to deny all rdp traffic
+
 resource "azurerm_firewall_network_rule_collection" "deny_rdp" {
   name                = "deny-rdp"
   resource_group_name = data.azurerm_resource_group.firewall_rg.name
@@ -92,23 +81,12 @@ resource "azurerm_firewall_network_rule_collection" "deny_all" {
   }
 }
 
-# module "AVM_virtual_machine" {
-#   source = "github.com/Azure/terraform-azurerm-avm-res-compute-virtualmachine.git"
-
-#   name = "avm-vm-001"
-#   resource_group_name = azurerm_resource_group.firewall_rg.name
-#   virtualmachine_sku_size = "Standard_B2ms"
-
-#   depends_on = [azurerm_resource_group.firewall_rg]
-# }
-
-
-module "firewall" {
-  source                      = "github.com/Azure/terraform-azurerm-avm-res-network-azurefirewall.git"
+# module "AVM_firewall" {
+#   source                      = "github.com/Azure/terraform-azurerm-avm-res-network-azurefirewall.git"
   
-  name                        = var.firewall_name
-  location                    = data.azurerm_resource_group.firewall_rg.location
-  resource_group_name         = data.azurerm_resource_group.firewall_rg.name
-  firewall_sku_name           = var.firewall_sku_name
-  firewall_sku_tier           = var.firewall_sku_tier
-}
+#   name                        = var.firewall_name
+#   location                    = data.azurerm_resource_group.firewall_rg.location
+#   resource_group_name         = data.azurerm_resource_group.firewall_rg.name
+#   firewall_sku_name           = var.firewall_sku_name
+#   firewall_sku_tier           = var.firewall_sku_tier
+# }

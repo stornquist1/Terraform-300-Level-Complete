@@ -1,5 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License.
 terraform {
   required_version = ">= 1.0.11"
   required_providers {
@@ -38,9 +36,9 @@ locals {
 }
 
 resource "azurerm_policy_set_definition" "custom_dod_il5_initiative" {
-  name                  = "${var.de_environment}-${var.policy_set_name}"
+  name                  = "${var.environment}-${var.policy_set_name}"
   policy_type           = var.policy_type
-  display_name          = "${var.de_environment}-${var.policy_set_name}"
+  display_name          = "${var.environment}-${var.policy_set_name}"
   description           = var.policy_description
   parameters            = jsonencode(local.parameters)
 
@@ -63,8 +61,8 @@ resource "azurerm_policy_set_definition" "custom_dod_il5_initiative" {
 }
 
 resource "azurerm_subscription_policy_assignment" "custom_dod_il5_assignment" {
-  name                 = "${var.de_environment}-${var.policy_set_assignment_name}"
-  display_name         = "${var.de_environment}-${var.policy_set_assignment_name}"
+  name                 = "${var.environment}-${var.policy_set_assignment_name}"
+  display_name         = "${var.environment}-${var.policy_set_assignment_name}"
   policy_definition_id = azurerm_policy_set_definition.custom_dod_il5_initiative.id
   subscription_id      = var.subscription_id
   identity {

@@ -30,20 +30,15 @@ variable "policy_set_assignment_name" {
   default     = "IL5-Assignment"
 }
 
-variable "de_environment" {
-  description = "The Digital Ecosystem environment (dev or prod)"
+variable "environment" {
+  description = "dev or prod environment."
   type        = string
-  default     = "dev"
+  default     = "prod"
 }
 
 variable "subscription_id" {
   description = "The subscription ID to assign the policy set to."
   type        = string
-  default = "/subscriptions/c63c958d-d7ac-46a6-a4ed-aabf5adbd706"
-}
-
-variable "management_group_id" {
-  description = "The management group ID to assign the policy set to."
-  type        = string
-  default     = "/managmentgroups/242da254-1fea-0364-2584-c930f11f89c2"
+  #add your own subscription ID here
+  default = "/subscriptions/c4e9d5be-bc64-4958-b3ae-3666010d6116"
 }
