@@ -78,7 +78,7 @@ resource "azurerm_network_security_group" "nsgjit" {
     name                       = "srjit"
     priority                   = 4095
     direction                  = "Inbound"
-    access                     = "Deny"
+    access                     = "Allow"
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "3389"
