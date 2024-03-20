@@ -6,7 +6,6 @@ resource "azurerm_container_registry" "acr" {
   sku                 = "Standard"
 }
 
-
 # Now I do this
 
 # resource "azurerm_role_assignment" "acr_to_aks_connector" {

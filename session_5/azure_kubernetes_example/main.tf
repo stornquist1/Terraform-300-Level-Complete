@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/helm"
       version = ">= 2.1.0"
     }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">=3.95.0"
+    }
   }
 }
 
@@ -51,12 +55,10 @@ resource "kubernetes_namespace" "test" {
 
 resource "helm_release" "nginx_ingress" {
   name      = "nginx-ingress-controller"
-  namespace = "test"
+  namespace = kubernetes_namespace.test.metadata.0.name
 
   repository = "https://kubernetes.github.io/ingress-nginx"
   chart      = "ingress-nginx"
-
-  depends_on = [kubernetes_namespace.test]
 }
 
 # lifecycle = {

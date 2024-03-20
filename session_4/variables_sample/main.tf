@@ -19,3 +19,4 @@ variable "sample_var" {
 # 6. Default values from the variable configuration
 
 # export TF_VAR_sample_var="I am the environment variable: TF_VAR_sample_var"
+# unset TF_VAR_sample_var
