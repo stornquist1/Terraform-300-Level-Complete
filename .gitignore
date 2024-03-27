@@ -28,3 +28,6 @@ tfplan
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+*.auto.tfvars
+*.auto.tfvars
+~

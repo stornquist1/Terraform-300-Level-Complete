@@ -1,4 +1,4 @@
-$suffix = "tf300"
+$suffix = "tf300session2"
 
 $rg = New-AzResourceGroup -Name "rg-$suffix" -Location "eastus"
 
@@ -6,6 +6,6 @@ $sa = New-AzStorageAccount -ResourceGroupName $rg.ResourceGroupName -Name "sasta
 
 $ctx = New-AzStorageContext -StorageAccountName $sa.StorageAccountName -UseConnectedAccount
 
-$container = New-AzStorageContainer -Name "tfstate-$suffix" -Context $ctx
+$container = New-AzStorageContainer -Name "fileshare-$suffix" -Context $ctx
 
 # Remove-AzResourceGroup -Name "rg-$suffix" -Force -AsJob
