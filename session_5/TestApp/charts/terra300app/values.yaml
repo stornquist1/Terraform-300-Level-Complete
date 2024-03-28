@@ -1,0 +1,20 @@
+# Default values for terra300app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+#
+ 
+appname: terra300app
+namespace: terraform300
+
+replicaCount: 1
+
+image:
+  repository: terra300.azurecr.io/testapp
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.0.1"
+
+service:
+  type: LoadBalancer
+  port: 8080
+
