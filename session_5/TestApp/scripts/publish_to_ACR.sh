@@ -28,8 +28,8 @@ az login --use-device-code
 ###  Setting variables to be used within script
 ###
 
-ACR_NAME=terra300
-ACR_URL=$ACR_NAME.azurecr.io
+ACR_NAME=readinessacr
+ACR_URL=$ACR_NAME.azurecr.us
 
 
 ###
@@ -55,7 +55,7 @@ echo "Logged in."$'\n'
 ###
 
 echo "Tagging and publishing images to ACR..."
-docker push terra300.azurecr.io/testapp:0.0.1
+docker push readinessacr.azurecr.us/testapp:0.0.1
 echo "Image publish complete."$'\n'
 
 ###
@@ -65,7 +65,7 @@ echo "Image publish complete."$'\n'
 echo "Logging helm into ACR..."
 USER_NAME="00000000-0000-0000-0000-000000000000"
 PASSWORD=$(az acr login --name $ACR_NAME --expose-token --output tsv --query accessToken)
-helm registry login $ACR_NAME.azurecr.io --username $USER_NAME --password $PASSWORD
+helm registry login $ACR_NAME.azurecr.us --username $USER_NAME --password $PASSWORD
 echo $'\n'
 
 echo "Publishing helm charts to ACR..."

@@ -29,5 +29,5 @@ tfplan
 .terraformrc
 terraform.rc
 *.auto.tfvars
-*.auto.tfvars
+*.tar
 ~

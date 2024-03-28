@@ -14,6 +14,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 
+  # lifecycle {
+  #   ignore_changes = [
+  #     default_node_pool
+  #   ]
+  # }
+
 }
 
 resource "local_file" "kubeconfig" {

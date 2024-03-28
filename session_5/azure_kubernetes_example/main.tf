@@ -43,7 +43,7 @@ provider "helm" {
 }
 
 data "azurerm_kubernetes_cluster" "default" {
-  name                = "akstff82a"
+  name                = "readinessaks"
   resource_group_name = "aks-rg"
 }
 
@@ -53,16 +53,8 @@ resource "kubernetes_namespace" "test" {
   }
 }
 
-resource "helm_release" "nginx_ingress" {
-  name      = "nginx-ingress-controller"
-  namespace = kubernetes_namespace.test.metadata.0.name
-
-  repository = "https://kubernetes.github.io/ingress-nginx"
-  chart      = "ingress-nginx"
+resource "helm_release" "testapp" {
+  name       = var.helm_deployment_name
+  repository = "oci://${var.azure_container_registry}/helm"
+  chart      = "terra300app"
 }
-
-# lifecycle = {
-#   ignore_changes = [
-#     "azurerm.kubernetes_cluster.default_node_pool"
-#   ]
-# }

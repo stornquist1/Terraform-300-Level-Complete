@@ -17,5 +17,5 @@ variable "image_tag" {
 variable "azure_container_registry" {
   description = "URL of the Azure Container registry where images and helm charts are stored."
   type        = string
-  default     = "terra300.azurecr.io"
+  default     = "readinessacr.azurecr.us/testapp"
 }
