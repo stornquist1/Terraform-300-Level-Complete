@@ -4,12 +4,12 @@
 #
  
 appname: terra300app
-namespace: terraform300
+namespace: test
 
 replicaCount: 1
 
 image:
-  repository: terra300.azurecr.io/testapp
+  repository: readinessacr.azurecr.us/testapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.0.1"
